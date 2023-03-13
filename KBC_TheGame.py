@@ -182,10 +182,13 @@ class MyWidget(Widget):
                 self.add_widget(self.restart)
                 #self.remove_widget(self.ques_label)
         else:
-            if self.money>=10000 and self.money<320000:
-                self.money=10000
-            elif self.money>=320000 and self.money<=10000000:
-                self.money=320000  
+            if self.toggle_button1.state=='down' or self.toggle_button2.state=='down' or self.toggle_button3.state=='down' or self.toggle_button4.state=='down':
+                if self.money<10000:
+                    self.money=0
+                elif self.money>=10000 and self.money<320000:
+                    self.money=10000
+                elif self.money>=320000 and self.money<=10000000:
+                    self.money=320000
             self.remove_widget(self.lock_button)
             self.lose=Label(text=f"YOU LOSE! Money Earned ₹ {self.money}.",font_size=30,pos=(300,220))
             self.add_widget(self.lose)
